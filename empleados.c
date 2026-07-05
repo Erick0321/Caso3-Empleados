@@ -68,3 +68,29 @@ void registrarEmpleado(Empleado empleados[], int *total)
 
     printf("Empleado registrado correctamente.\n");
 }
+
+void listarEmpleados(Empleado empleados[], int total)
+{
+    if(total == 0)
+    {
+        printf("\nNo hay empleados registrados.\n");
+        return;
+    }
+
+    printf("\n==============================\n");
+    printf("      LISTA DE EMPLEADOS\n");
+    printf("==============================\n");
+
+    for(int i = 0; i < total; i++)
+    {
+        printf("\nEmpleado #%d\n", i + 1);
+        printf("Codigo: %s\n", empleados[i].codigo);
+        printf("Nombre: %s\n", empleados[i].nombre);
+        printf("Cargo: %s\n", empleados[i].cargo);
+        printf("Sueldo Base: %.2f\n", empleados[i].sueldoBase);
+        printf("Horas Extra: %d\n", empleados[i].horasExtra);
+        printf("Sueldo Total: %.2f\n", calcularSueldoTotal(empleados[i]));
+
+        printf("------------------------------\n");
+    }
+}
