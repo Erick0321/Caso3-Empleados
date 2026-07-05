@@ -14,4 +14,9 @@ typedef struct
 
 } Empleado;
 
+void registrarEmpleado(Empleado empleados[], int *total);
+void listarEmpleados(Empleado empleados[], int total);
+float calcularSueldoTotal(Empleado empleado);
+int buscarPorCodigo(Empleado empleados[], int total, char codigo[]);
+
 #endif
