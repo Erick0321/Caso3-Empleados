@@ -3,55 +3,57 @@
 
 int main()
 {
+    Empleado empleados[MAX_EMPLEADOS];
+    int total = 0;
     int opcion;
 
     do
     {
-        printf ("\n");
-        printf ("====================================\n");
-        printf ("  SISTEMA DE GESTION DE EMPLEADOS\n");
-        printf ("====================================\n");
-        printf ("1. Registrar empleado\n");
-        printf ("2. Listar empleados\n");
-        printf ("3. Buscar empleado\n");
-        printf ("4. Actualizar empleado\n");
-        printf ("5. Eliminar empleado\n");
-        printf ("6. Salir\n");
+        printf("\n");
+        printf("=====================================\n");
+        printf("   SISTEMA DE GESTION DE EMPLEADOS\n");
+        printf("=====================================\n");
+        printf("1. Registrar empleado\n");
+        printf("2. Listar empleados\n");
+        printf("3. Buscar empleado\n");
+        printf("4. Actualizar empleado\n");
+        printf("5. Eliminar empleado\n");
+        printf("6. Salir\n");
 
-        printf ("\nSeleccione una opcion: ");
+        printf("\nSeleccione una opcion: ");
         scanf("%d", &opcion);
 
-        switch (opcion)
+        switch(opcion)
         {
-        case 1:
-                printf("Registrar empleado\n");
+            case 1:
+                registrarEmpleado(empleados, &total);
                 break;
 
             case 2:
-                printf("Listar empleados\n");
+                listarEmpleados(empleados, total);
                 break;
 
-                case 3:
-                printf("Buscar empleados\n");
+            case 3:
+                buscarEmpleado(empleados, total);
                 break;
 
-                case 4:
-                printf("Actualizar empleado\n");
+            case 4:
+                actualizarEmpleado(empleados, total);
                 break;
 
-                case 5:
+            case 5:
                 printf("Eliminar empleado\n");
                 break;
 
-                case 6:
+            case 6:
                 printf("Saliendo del programa...\n");
                 break;
 
-                default:
-                printf("Opcion no valida\n");
+            default:
+                printf("Opcion no valida.\n");
         }
 
-    }while(opcion != 6);
+    } while(opcion != 6);
 
     return 0;
 }

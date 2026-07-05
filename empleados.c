@@ -94,3 +94,77 @@ void listarEmpleados(Empleado empleados[], int total)
         printf("------------------------------\n");
     }
 }
+
+void buscarEmpleado(Empleado empleados[], int total)
+{
+    char codigo[16];
+    int posicion;
+
+    printf("\nIngrese el codigo del empleado: ");
+    scanf("%15s", codigo);
+
+    posicion = buscarPorCodigo(empleados, total, codigo);
+
+    if(posicion == -1)
+    {
+        printf("Empleado no encontrado.\n");
+        return;
+    }
+
+    printf("\nEmpleado encontrado:\n");
+    printf("Codigo: %s\n", empleados[posicion].codigo);
+    printf("Nombre: %s\n", empleados[posicion].nombre);
+    printf("Cargo: %s\n", empleados[posicion].cargo);
+    printf("Sueldo Base: %.2f\n", empleados[posicion].sueldoBase);
+    printf("Horas Extra: %d\n", empleados[posicion].horasExtra);
+    printf("Sueldo Total: %.2f\n", calcularSueldoTotal(empleados[posicion]));
+}
+
+void actualizarEmpleado(Empleado empleados[], int total)
+{
+    char codigo[16];
+    int posicion;
+
+    if(total == 0)
+    {
+        printf("\nNo hay empleados registrados.\n");
+        return;
+    }
+
+    printf("\nIngrese el codigo del empleado: ");
+    scanf("%15s", codigo);
+
+    posicion = buscarPorCodigo(empleados, total, codigo);
+
+    if(posicion == -1)
+    {
+        printf("Empleado no encontrado.\n");
+        return;
+    }
+
+    printf("\nNuevo nombre: ");
+    scanf(" %[^\n]", empleados[posicion].nombre);
+
+    printf("Nuevo cargo: ");
+    scanf(" %[^\n]", empleados[posicion].cargo);
+
+    printf("Nuevo sueldo base: ");
+    scanf("%f", &empleados[posicion].sueldoBase);
+
+    if(empleados[posicion].sueldoBase <= 0)
+    {
+        printf("Error: sueldo invalido.\n");
+        return;
+    }
+
+    printf("Nuevas horas extra: ");
+    scanf("%d", &empleados[posicion].horasExtra);
+
+    if(empleados[posicion].horasExtra < 0)
+    {
+        printf("Error: horas extra invalidas.\n");
+        return;
+    }
+
+    printf("\nEmpleado actualizado correctamente.\n");
+}
