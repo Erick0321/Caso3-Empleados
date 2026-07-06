@@ -211,3 +211,28 @@ void eliminarEmpleado(Empleado empleados[], int *total)
         printf("Eliminacion cancelada.\n");
     }
 }
+
+void guardarEmpleados(Empleado empleados[], int total)
+{
+    FILE *archivo = fopen("empleados.csv", "w");
+
+    if(archivo == NULL)
+    {
+        printf("Error al abrir el archivo.\n");
+        return;
+    }
+
+    fprintf(archivo, "codigo_empleado,nombre,cargo,sueldo_base,horas_extra\n");
+
+    for(int i = 0; i < total; i++)
+    {
+        fprintf(archivo, "%s,%s,%s,%.2f,%d\n",
+                empleados[i].codigo,
+                empleados[i].nombre,
+                empleados[i].cargo,
+                empleados[i].sueldoBase,
+                empleados[i].horasExtra);
+    }
+
+    fclose(archivo);
+}

@@ -21,5 +21,7 @@ float calcularSueldoTotal(Empleado empleado);
 int buscarPorCodigo(Empleado empleados[], int total, char codigo[]);
 void actualizarEmpleado(Empleado empleados[], int total);
 void eliminarEmpleado(Empleado empleados[], int *total);
+void guardarEmpleados(Empleado empleados[], int total);
+void cargarEmpleados(Empleado empleados[], int *total);
 
 #endif
