@@ -236,3 +236,29 @@ void guardarEmpleados(Empleado empleados[], int total)
 
     fclose(archivo);
 }
+
+void cargarEmpleados(Empleado empleados[], int *total)
+{
+    FILE *archivo = fopen("empleados.csv", "r");
+
+    if(archivo == NULL)
+    {
+        return;
+    }
+
+    char linea[200];
+
+    fgets(linea, sizeof(linea), archivo);
+
+    while(fscanf(archivo, "%15[^,],%49[^,],%49[^,],%f,%d\n",
+                 empleados[*total].codigo,
+                 empleados[*total].nombre,
+                 empleados[*total].cargo,
+                 &empleados[*total].sueldoBase,
+                 &empleados[*total].horasExtra) == 5)
+    {
+        (*total)++;
+    }
+
+    fclose(archivo);
+}

@@ -1,3 +1,4 @@
 codigo_empleado,nombre,cargo,sueldo_base,horas_extra
 E001,Erick,Programador,900.00,5
 E002,Juan,Dise¤ador,850.00,5
+E003,Ana,Soporte,700.00,4

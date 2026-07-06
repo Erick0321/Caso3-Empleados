@@ -6,6 +6,7 @@ int main()
     Empleado empleados[MAX_EMPLEADOS];
     int total = 0;
     int opcion;
+    cargarEmpleados(empleados, &total);
 
     do
     {
