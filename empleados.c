@@ -168,3 +168,46 @@ void actualizarEmpleado(Empleado empleados[], int total)
 
     printf("\nEmpleado actualizado correctamente.\n");
 }
+
+void eliminarEmpleado(Empleado empleados[], int *total)
+{
+    char codigo[16];
+    int posicion;
+    char confirmacion;
+
+    if(*total == 0)
+    {
+        printf("\nNo hay empleados registrados.\n");
+        return;
+    }
+
+    printf("\nIngrese el codigo del empleado a eliminar: ");
+    scanf("%15s", codigo);
+
+    posicion = buscarPorCodigo(empleados, *total, codigo);
+
+    if(posicion == -1)
+    {
+        printf("Empleado no encontrado.\n");
+        return;
+    }
+
+    printf("Seguro que desea eliminar a %s? (s/n): ", empleados[posicion].nombre);
+    scanf(" %c", &confirmacion);
+
+    if(confirmacion == 's' || confirmacion == 'S')
+    {
+        for(int i = posicion; i < (*total) - 1; i++)
+        {
+            empleados[i] = empleados[i + 1];
+        }
+
+        (*total)--;
+
+        printf("Empleado eliminado correctamente.\n");
+    }
+    else
+    {
+        printf("Eliminacion cancelada.\n");
+    }
+}

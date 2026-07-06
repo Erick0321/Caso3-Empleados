@@ -42,7 +42,7 @@ int main()
                 break;
 
             case 5:
-                printf("Eliminar empleado\n");
+                eliminarEmpleado(empleados, &total);
                 break;
 
             case 6:
